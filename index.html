@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peter Small — Tool Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f1114;
+    --surface: #181b20;
+    --surface-hover: #1e2228;
+    --border: #2a2e35;
+    --text-primary: #e8e6e3;
+    --text-secondary: #8b8d91;
+    --accent: #c8a97e;
+    --accent-dim: rgba(200, 169, 126, 0.12);
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'DM Mono', 'SF Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.25rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(15, 17, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-name {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 1.75rem; }
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 2rem 6rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* --- PROJECTS GRID --- */
+  .projects {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .project-card:hover {
+    background: var(--surface-hover);
+    border-color: #3a3e45;
+    transform: translateY(-2px);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+  }
+  .card-arrow {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .project-card:hover .card-arrow {
+    transform: translate(3px, -3px);
+    color: var(--text-primary);
+  }
+  .card-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .card-domain {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--text-primary); }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    .projects { padding: 2rem 1.25rem 6rem; }
+    .project-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Peter Small</span>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="mailto:petercarminesmall@gmail.com">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">Tool Workshop</div>
+  <h1>I build tools that solve<br>problems I actually have.</h1>
+  <p>A small collection of things I've made for family life, property management, and keeping the days running a little smoother.</p>
+</section>
+
+<section class="projects" id="projects">
+  <div class="section-label">Projects</div>
+  <div class="project-grid">
+
+    <a href="https://bonds.petercarminesmall.com" class="project-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-tag">Family</span>
+        <span class="card-arrow">&nearr;</span>
+      </div>
+      <div class="card-title">Small Bonds</div>
+      <div class="card-desc">Schedules dedicated 1-on-1 time with each kid, rotates fairly, sends SMS reminders, and tracks what you did together.</div>
+      <div class="card-domain">bonds.petercarminesmall.com</div>
+    </a>
+
+    <a href="https://nutkin.petercarminesmall.com" class="project-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-tag">Kids</span>
+        <span class="card-arrow">&nearr;</span>
+      </div>
+      <div class="card-title">Nutkin</div>
+      <div class="card-desc">A visual timer and alarm clock for kids, born from a Raspberry Pi prototype and now running as a web app.</div>
+      <div class="card-domain">nutkin.petercarminesmall.com</div>
+    </a>
+
+    <a href="https://inthealpine.com" class="project-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-tag">Operations</span>
+        <span class="card-arrow">&nearr;</span>
+      </div>
+      <div class="card-title">In The Alpine</div>
+      <div class="card-desc">A management tool for short-term rental operations: scheduling, guest communication, and property tracking in one place.</div>
+      <div class="card-domain">inthealpine.com</div>
+    </a>
+
+    <a href="https://www.airbnb.com/rooms/1211785036778364113?guests=1&adults=1&s=67&unique_share_id=20de377f-4119-4ab4-af35-ddeef28d233a" class="project-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-tag">Rental</span>
+        <span class="card-arrow">&nearr;</span>
+      </div>
+      <div class="card-title">The Cabin</div>
+      <div class="card-desc">Our short-term rental listing. The reason In The Alpine exists in the first place.</div>
+      <div class="card-domain">airbnb.com</div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 Peter Small</span>
+  <a href="mailto:petercarminesmall@gmail.com">petercarminesmall@gmail.com</a>
+</footer>
+
+</body>
+</html>
