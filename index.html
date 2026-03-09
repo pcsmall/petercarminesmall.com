@@ -170,6 +170,139 @@
     padding-top: 0.5rem;
   }
 
+  /* --- SECTION DIVIDER --- */
+  .section-divider {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .section-divider hr {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* --- BACKGROUND --- */
+  .background {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+  }
+  .bg-summary {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    max-width: 680px;
+    margin-bottom: 3.5rem;
+  }
+  .bg-summary p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .bg-summary .summary-kicker {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin-top: 0.85rem;
+    line-height: 1.7;
+  }
+  .background-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .bg-column h3 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+  .bg-item {
+    margin-bottom: 1.75rem;
+    padding-left: 0;
+    border-left: 2px solid transparent;
+  }
+  .bg-item.current {
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+  }
+  .bg-item:last-child {
+    margin-bottom: 0;
+  }
+  .bg-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+  }
+  .bg-role-sub {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin-bottom: 0.15rem;
+  }
+  .bg-company {
+    font-size: 0.92rem;
+    color: var(--accent);
+    margin-bottom: 0.15rem;
+  }
+  .bg-dates {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+  }
+.bg-edu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+  .bg-edu-item:last-child {
+    margin-bottom: 0;
+  }
+  .bg-edu-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+  }
+  .bg-edu-logo.michigan { background: #00274C; }
+  .bg-edu-logo.texas { background: #BF5700; }
+  .bg-edu-logo.nols { background: #2a5a3a; }
+  .bg-edu-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .bg-school {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.1rem;
+  }
+  .bg-degree {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.1rem;
+  }
+
+  @media (max-width: 600px) {
+    .background { padding: 0 1.25rem 6rem; }
+    .background-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
   /* --- FOOTER --- */
   footer {
     max-width: 960px;
@@ -188,6 +321,7 @@
     transition: color 0.2s;
   }
   footer a:hover { color: var(--text-primary); }
+  .footer-links { display: flex; gap: 1.5rem; }
 
   /* --- RESPONSIVE --- */
   @media (max-width: 600px) {
@@ -205,6 +339,7 @@
   <span class="nav-name">Peter Small</span>
   <div class="nav-links">
     <a href="#projects">Projects</a>
+    <a href="#background">Background</a>
     <a href="mailto:petercarminesmall@gmail.com">Contact</a>
   </div>
 </nav>
@@ -249,6 +384,16 @@
       <div class="card-domain">inthealpine.com</div>
     </a>
 
+    <a href="https://ferro.petercarminesmall.com" class="project-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-tag">Health</span>
+        <span class="card-arrow">&nearr;</span>
+      </div>
+      <div class="card-title">Ferro</div>
+      <div class="card-desc">Daily mobility and pain tracking for people working on physical goals. Log check-ins, track progress across custom targets, and get auto-generated exercise sessions based on where you need the most work.</div>
+      <div class="card-domain">ferro.petercarminesmall.com</div>
+    </a>
+
     <a href="https://airbnb.com/summitbluecabin" class="project-card" target="_blank" rel="noopener">
       <div class="card-top">
         <span class="card-tag">Rental</span>
@@ -262,9 +407,81 @@
   </div>
 </section>
 
+<div class="section-divider"><hr></div>
+
+<section class="background" id="background">
+  <div class="section-label">Background</div>
+
+  <div class="bg-summary">
+    <p>I lead partnerships at Trove, powering circular commerce for brands like Arc'teryx, Carhartt, EILEEN FISHER, Levi's, Patagonia, and others. Before that, I scaled Beeline Bikes into the largest SaaS platform in the bike industry, bridging the gap between D2C brands and brick-and-mortar retailers in a category that had always run on traditional wholesale. Across 10+ years of startup experience, I've driven two successful exits, led multiple acquisitions and capital raises, and negotiated hundreds of brand and retail contracts. Earlier, I spent five years in merchandise planning and sourcing at Target.</p>
+    <div class="summary-kicker">Complex, cross-functional problems are where I'm most useful: scaling operations, structuring deals, and building things that haven't been built before.</div>
+  </div>
+
+  <div class="background-inner">
+    <div class="bg-column">
+      <h3>Experience</h3>
+
+      <div class="bg-item current">
+        <div class="bg-role">VP, Partnerships</div>
+        <div class="bg-role-sub">Previously Director, Partnerships</div>
+        <div class="bg-company">Trove</div>
+        <div class="bg-dates">2020 – Present</div>
+      </div>
+
+      <div class="bg-item">
+        <div class="bg-role">President</div>
+        <div class="bg-role-sub">Previously COO, Head of Business Operations</div>
+        <div class="bg-company">Beeline Bikes</div>
+        <div class="bg-dates">2014 – 2020</div>
+      </div>
+
+      <div class="bg-item">
+        <div class="bg-role">Merchandise Planning Manager</div>
+        <div class="bg-role-sub">Previously Merch Ops Manager, Sourcing Analyst</div>
+        <div class="bg-company">Target</div>
+        <div class="bg-dates">2008 – 2013</div>
+      </div>
+    </div>
+
+    <div class="bg-column">
+      <h3>Education</h3>
+
+      <div class="bg-edu-item">
+        <div class="bg-edu-logo texas">UT</div>
+        <div class="bg-edu-info">
+          <div class="bg-school">Texas McCombs School of Business</div>
+          <div class="bg-degree">MBA</div>
+          <div class="bg-dates">2013 – 2015</div>
+        </div>
+      </div>
+
+      <div class="bg-edu-item">
+        <div class="bg-edu-logo michigan">M</div>
+        <div class="bg-edu-info">
+          <div class="bg-school">University of Michigan</div>
+          <div class="bg-degree">Bachelor of General Studies</div>
+          <div class="bg-dates">2004 – 2008</div>
+        </div>
+      </div>
+
+      <div class="bg-edu-item">
+        <div class="bg-edu-logo nols">NOLS</div>
+        <div class="bg-edu-info">
+          <div class="bg-school">NOLS</div>
+          <div class="bg-degree">Leadership</div>
+          <div class="bg-dates">2015 – 2017</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <span>&copy; 2026 Peter Small</span>
-  <a href="mailto:petercarminesmall@gmail.com">petercarminesmall@gmail.com</a>
+  <div class="footer-links">
+    <a href="mailto:petercarminesmall@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/petercsmall/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
 </footer>
 
 </body>
